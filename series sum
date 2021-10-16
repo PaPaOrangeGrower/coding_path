@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int k;
+   // scanf_s("%d:\n", &k);
+    cin >> k;
+    double sum=0;
+    int i;
+    for ( i = 1; sum <= (double)k; i++)
+    {
+        sum += 1.0 / i;
+    }
+    cout << i-1;
+     
+    return 0;
+}
