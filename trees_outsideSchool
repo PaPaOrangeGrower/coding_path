@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int  length;
+    cin >> length;
+    int arr_trees[10000];
+    register int i;
+    for (i = 0; i <= length; i++)
+    {
+        arr_trees[i] = 1;
+    }//有树为1
+    int many;
+    cin >> many;
+    int arr_sections[100][2];
+    register int j;
+    for (j = 0; j < many; j++)
+    {
+        cin >> arr_sections[j][0];
+        cin >> arr_sections[j][1];
+    }
+    register int k;
+    for ( k = 0; k < many; k++)
+    {
+        for (int l = arr_sections[k][0]; l <= arr_sections[k][1]; l++)
+        {
+            arr_trees[l] = 0;
+        }
+    }//把区域内的树初始化为0
+    register int y = 0;
+    int sum = 0;
+    for (; y <= length; y++)
+    {
+        if (arr_trees[y] == 1)
+            sum += 1;
+    }
+    cout << sum;
+    return 0;
+}
