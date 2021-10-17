@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr_random_num[100];
+    int num_many;
+    cin >> num_many;
+    for (register int i = 0; i < num_many; i++)
+    {
+        cin >> arr_random_num[i];
+    }
+    register int a,b ;
+    for (a = 0; a < num_many; a++)
+    {
+        for (b = a; b < num_many; b++)
+        {
+            if(arr_random_num[a]==arr_random_num[b+1])
+            {
+                arr_random_num[a] = 0;
+            }
+        }
+    }
+   /* for (a = 0; a < num_many; a++)
+    {
+        cout << arr_random_num[a];
+    }
+    */
+    register int j, k;
+    int temp;
+    for (j = 0; j < num_many - 1; j++)
+    {
+        for (k = 0; k < num_many - 1 - j; k++)
+        {
+            if (arr_random_num[k] > arr_random_num[k + 1])
+            {
+                temp = arr_random_num[k];
+                arr_random_num[k] = arr_random_num[k + 1];
+                arr_random_num[k + 1] = temp;
+            }
+            
+
+        }
+    }
+    int sum=0;
+     for (a = 0; a < num_many; a++)
+    {
+         if (arr_random_num[a] == 0)
+         {
+             continue;
+        }
+         else
+         {
+             sum += 1;
+            // cout << arr_random_num[a] << " ";
+         }
+    }
+     cout << sum << endl;
+     for (a = 0; a < num_many; a++)
+     {
+         if (arr_random_num[a] == 0)
+         {
+             continue;
+         }
+         else
+         {
+             //sum += 1;
+             cout << arr_random_num[a] << " ";
+         }
+     }
+
+    
+
+}
