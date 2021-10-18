@@ -1,0 +1,18 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int a,b,day,max=0;
+	for (register int i = 0; i < 7; i++)
+	{
+		cin >> a >> b;
+		if ((a + b )> 8&&(a+b)>max)
+		{
+			max = a + b;
+			day = i + 1;
+		}
+	}
+	cout << day;
+	return 0;
+}
