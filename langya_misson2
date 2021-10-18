@@ -1,0 +1,59 @@
+#include <iostream>
+#include<random>
+#include<time.h>
+using namespace std;
+void insert_sort(float arr[],int length)//创建一个直接插入排序函数
+{
+    int j, k;
+    float temp_num;//定义一个浮点数，用于之后的数字交换
+    for (j = 1; j < length; j++)//获取数组长度，大循环次数小于数组长度
+    {
+        if (arr[j] < arr[j - 1])//判断，把小的放到左边去
+        {
+            temp_num = arr[j];
+            arr[j] = arr[j - 1];
+            for (k = j - 2; k >= 0 && arr[k] > temp_num; --k)//判断左边两个数的大小关系，再把小的放到左边去
+            {
+                arr[k + 1] = arr[k];
+            }
+            arr[k + 1] = temp_num;
+           
+           
+        }
+        cout << "排序第" << j << "次后的结果为：";//用一个循环输出每一次排序后的数组
+        for (int a = 0; a < 10; a++)
+        {
+            cout << arr[a] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl << "直接插入排序后的数组为：";//输入完成后的数组
+    for (int a = 0; a < 10; a++)
+    {
+        cout << arr[a] << " ";
+    }
+
+}
+int main()
+{
+    srand((unsigned)time(NULL));//重置时间种子，保证每次随机出来的数组都不一样
+    float arr[10];//创建一个浮点类型的数组，数组长度为10
+    for (int i = 0; i < 10; i++)
+    {
+        float a = (float)(rand() % 999 )/10.0f;//使用for循环和random函数随机生成10个浮点数并赋值给一维数组arr，/10.0f是为了生成一位小数
+        arr[i] = a;
+      // cout << arr[i] << " ";输出检验
+    }//一个长度为10的随机浮点数组就创建完了
+    cout << "直接插入排序前的数组为：";
+    for (int a = 0; a < 10; a++)
+    {
+        cout << arr[a] << " ";
+    }
+    cout << endl;
+
+    int length = sizeof(arr) / sizeof(arr[0]);
+    //下面调用直接插入排序函数
+     insert_sort(arr,length);
+     cout << endl << "*********************" << endl << "算法的时间复杂度为:O(n^2),算法的空间复杂度为O(1)";//用了两层循环，所以空间复杂度是O（n^2）,数据个数跟参数成正比，所以空间复杂度为O(1)
+
+}
