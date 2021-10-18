@@ -1,0 +1,113 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+class plural
+{
+public:
+    plural(float a, float b, float* p1, float c, float d, float* p2)//在复数类里创建一个构造函数，在调用时给两个复数赋值
+    {
+        *p1 = a;
+        p1++;
+        *p1 = b;
+        *p2 = c;
+        p2++;
+        *p2 = d;
+
+    }
+};
+void functionTEST()//在functionTEST里定义一个plural的p
+{
+    plural p();
+}
+struct plurality
+{
+    float real;
+    float img;
+}plurality1;//创建一个复数结构体,浮点数real代表复数的实部，浮点数img代表复数的虚部
+struct complex
+{
+    float mu;
+    float pluarl[2] = { plurality1.real,plurality1.img };
+
+};//创建一个complex结构体，包含一个接收模的mu和一个代表复数的数组  
+float complexOP1(float r, float i)
+{
+    float plu = r * r + i * i;
+    float ans = sqrt(plu);
+    return ans;
+}//创建一个复数取模函数
+class functions//定义一个functions类，包含相加函数，相乘函数和共轭函数
+{
+public:
+    void complexOP_Plus(float realNum1, float imgNum1, float realNum2, float imgNum2)//创建一个复数相加函数，两个复数的实部虚部的四个参为四个变量
+    {
+        float sum_real = realNum1 + realNum2;
+        float sum_img = imgNum1 + imgNum2;
+        cout << "两复数相加的结果为:" << sum_real << "+" << sum_img << "i";//输出相加结果
+    }
+    void complexOP_multi(float rrealNum1, float iimgNum1, float rrealNum2, float iimgNum2)//创建一个复数相乘函数，按复数相乘的运算法则进行赋值
+    {
+        float after_REALnumber = rrealNum1 * rrealNum2 - iimgNum1 * iimgNum2;
+        float after_IMGnumber = iimgNum1 * rrealNum2 + rrealNum1 * iimgNum2;
+        cout << "两复数相乘的结果为:" << after_REALnumber << "+" << after_IMGnumber << "i";
+    }
+    void complexOP_conj(float RealNum, float ImgNum)//创建一个共轭函数，只需把加号换成减号即可
+    {
+        cout << RealNum << "-" << ImgNum << "i";
+    }
+};
+int main()
+{
+    functions f1;//创建一个functions类的f1
+    struct complex ComplexNum1;//在complex结构体名下创建第一个复数
+    float a, b;
+    cout << "请输入第一个复数的实部（所有输入均为float类型）：";
+    cin >> a;
+    cout << endl << "请输入第一个复数的虚部：";
+    cin >> b;
+    cout << endl;
+
+    ComplexNum1.mu = complexOP1(a, b);
+
+    struct complex ComplexNum2;
+    float c, d;
+    cout << "请输入第二个复数的实部：";
+    cin >> c;
+    cout << endl << "请输入第二个复数的虚部：";
+    cin >> d;
+    float* p1;
+    p1 = &ComplexNum1.pluarl[0];
+    float* p2;
+    p2 = &ComplexNum2.pluarl[0];
+    void functionTEST(float a, float b, float* p1, float c, float d, float* p2);
+    //float real, float img, float* point
+    cout << endl << "第一个复数为：" << a << "+" << b << "i" << endl;//给第一个复数输出一下
+    cout << "它的模为：" << ComplexNum1.mu << endl << endl;
+    cout << endl << "第二个复数为：" << c << "+" << d << "i" << endl;//同上，创建第二个复数
+    ComplexNum2.mu = complexOP1(c, d);
+    cout << "它的模为：" << ComplexNum2.mu << endl;
+
+    ComplexNum2.mu = complexOP1(c, d);
+
+
+    cout << "请输入数字来选择接下来将要进行的操作" << endl << "1.输入数字1来进行两复数的相加\n2.输入数字2来进行两复数的相乘\n3.输入数字3来进行两复数的共轭\n";//给个小界面
+    int choose;
+    cin >> choose;
+    switch (choose)//用个switch把三种操作分开
+    {
+    case 1:   f1.complexOP_Plus(a, b, c, d);
+        break;//调用一下相加函数
+
+    case 2:    f1.complexOP_multi(a, b, c, d);//调用一下相乘函数
+        break;
+
+    case 3:    cout << "共轭后的两个复数分别为：";//调用一下共轭函数
+        f1.complexOP_conj(a, b);
+        cout << endl;
+        f1.complexOP_conj(c, d);//两个复数分别调用
+        break;
+
+    default:break;
+    }
+
+}
