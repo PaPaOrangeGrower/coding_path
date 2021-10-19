@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int save = 0,keep=0;
+    int plan[12],n=0,a=20;
+    for (int i = 1; i <= 12; i++) cin >> plan[i - 1];
+    for (int i = 1; i <= 12; i++)
+    {
+        save += 300;
+       
+        if (save < plan[i - 1] && a>0)
+        {
+            a = -i;
+        }
+        else if (save >= plan[i - 1])
+        {
+            n =(int)( save-plan[i-1]) / 100;
+            save = (( n!= 0) ? (save - n * 100-plan[i-1]) : (save-plan[i-1]));
+            keep += n * 100;
+        }
+        else
+            continue;
+    }
+    if (a != 20)
+        cout << a;
+    else
+    {
+        float ans = save + keep * 1.2;
+        cout << ans;
+    }
+}
