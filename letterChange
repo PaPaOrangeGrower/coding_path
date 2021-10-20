@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    char a,ch;
+    cin >> a;
+    ch = a + 'A' - 'a';
+    cout <<ch;
+    return 0;
+}
+//注意，若直接cout<<a+'A'-'a';输出的会是一个数字，要进行强转或用一个char类型来接收
