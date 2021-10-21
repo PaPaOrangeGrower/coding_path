@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int fish[100], n, num = 0;
+	cin >> n;
+	for (int a = 0; a < n; a++)
+		cin >> fish[a];
+	for (int i = 0; i < n; i++)
+	{
+		num = 0;
+		for (int y = 0; y <= i; y++)
+		{
+			num = fish[y] < fish[i] ? num + 1 : num;
+		}
+		cout << num<<" ";
+	}
+	return 0;
+}
