@@ -1,0 +1,15 @@
+#include <stdio.h>
+int k = 7;
+void f(int** s)
+{
+	int* t = &k; *s = t;
+	printf("%d,%d,%d,", k, *t, **s);
+	printf("%p,%p", t, &k);
+}
+int main(void)
+{
+	int i = 3, * p = &i, ** r = &p;
+	f(r);
+	printf("%d,%d,%d\n", i, *p, **r);
+	return 0;
+}
