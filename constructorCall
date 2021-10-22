@@ -26,10 +26,16 @@ private:
     int m_age;
 };
 
+void constCall()
+{
+    person p4(8);
+}
+
 int main()
 {
     person p0;
     person p1(10);
     person p2 = p1;
     person p3(p2);
+    constCall();
 }
