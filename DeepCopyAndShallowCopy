@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+class Person
+{
+  public:
+    Person()
+    {
+        cout << "Person的默认无参构造函数调用";
+    }
+    Person(int a,int h)
+    {
+        age = a;
+        m_height = new int(h);
+        cout << "Person的默认有参构造函数调用";
+    }
+    //自己写一个深拷贝构造函数，避免调用编译器提供的默认浅拷贝导致内存的重复释放
+    Person(const Person& p)
+    {
+        age = p.age;
+        m_height = new int(*p.m_height);
+        cout << "Person的拷贝构造函数调用";
+    }
+    //当在堆区开辟了内存时，要在析构函数处对开辟的内存进行释放
+    ~Person()
+    {
+        if (m_height != NULL)
+        {
+            delete m_height;
+        }
+        cout << "Person的析构函数调用";
+    }
+public:
+    int age;
+    int* m_height;
+};
+void copy()
+{
+    Person p1(10, 180);
+    Person p2(p1);
+    cout << "p1的年龄为：" << p1.age << endl;
+    cout << "p1的身高为：" << *p1.m_height << endl;
+    cout << "p2的年龄为：" << p2.age << endl;
+    cout << "p2的身高为：" << *p2.m_height << endl;
+}
+int main()
+{
+    copy();
+    return 0;
+}
